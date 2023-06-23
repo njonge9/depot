@@ -1,13 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Products</h1>
-
-<div id="products">
+ <br>
+<div id="products" class="card" style="width: 18rem;">
   <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
+    <%= image_tag(product.image_url) %>
+    <div class="card-body">
+      <h5><%= product.title%></h5>
+      <p><%= product.description%> </p>
+      <%= link_to "Show this product", product, class:"btn btn-primary" %>
+    </div>
   <% end %>
 </div>
 
