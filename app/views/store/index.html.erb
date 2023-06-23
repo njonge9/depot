@@ -13,13 +13,13 @@
         <div class='card mb-3'>
             <div class='row g-0'>
                 <div class='col-md-4'>
-                    <%= image_tag(product.image_url, class: 'img-fluid rounded-start', height: '300px', width: '490px') %>
+                    <%= image_tag(product.image_url, class: 'img-fluid rounded-start', height: '300', width: '490') %>
                 </div>
-                <div class='col-md-6'>
+                <div class='col-md-8'>
                     <div class='card-body'>
                         <h3 class='card-title'><%= product.title%> </h3>
                         <p class="card-text"><%= sanitize(product.description)%> </p>
-                        <h5><%= product.price%> </h5>
+                        <h5><%= number_to_currency(product.price, unit: 'KES', format: '%u%n')%> </h5>
                     </div>
                 </div>
             </div>
