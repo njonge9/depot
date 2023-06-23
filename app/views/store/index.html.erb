@@ -9,7 +9,9 @@
     <div class= "title text-center">
         <h1>My Catalog</h1>    
     </div>
+    <%cache @products do%>
     <% @products.each do |product|%>
+    <% cache product do%>
         <div class='card mb-3'>
             <div class='row g-0'>
                 <div class='col-md-4'>
@@ -24,5 +26,7 @@
                 </div>
             </div>
         </div>
+        <% end %>
     <% end%>
+    <%end%>
 </div>
