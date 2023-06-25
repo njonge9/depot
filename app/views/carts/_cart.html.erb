@@ -1,10 +1,29 @@
-<div id="<%= dom_id cart %>">
-    <h3>Cart</h3>
-    <ul>
-        <% cart.line_items.each do |item|%>
-            <li><%= item.quantity%>&times; <%= item.product.title%> </li>
-        <%end%>
-    </ul>
+<div id="<%= dom_id(cart) %>">
+  <h3 class="">Your Cart</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Quantity</th>
+        <th></th>
+        <th>Product</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cart.line_items.each do |line_item| %>
+        <tr>
+          <td><%= line_item.quantity %></td>
+          <td>&times;</td>
+          <td><%= line_item.product.title %></td>
+          <td><%= number_to_currency(line_item.total_price, unit: 'KES') %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan='3'><strong>Total:</strong></td>
+        <td><%= number_to_currency(cart.total_price, unit: 'KES') %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<%= button_to 'Empty Cart', cart, method: :delete, class: 'btn btn-danger'%>
+<%= button_to 'Empty Cart', cart, method: :delete, class: 'btn btn-danger' %>
