@@ -15,7 +15,9 @@
   <body>
     <%= render 'layouts/header'%>
     <br>
-    <%= render @cart%>
+    <% if @cart and not @cart.line_items.empty?%>
+      <%= render @cart%>
+    <% end %>
     <div class="container">
       <%= yield%>
     </div>
