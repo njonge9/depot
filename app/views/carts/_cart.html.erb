@@ -31,4 +31,17 @@
   </table>
 </div>
 
-<%= button_to 'Empty Cart', cart, method: :delete, class: 'btn btn-danger' %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="btn-group" role="group" aria-label="Button Group">
+        <%= button_to 'Empty Cart', cart, method: :delete, class: 'btn btn-danger me-2' %>
+        <%= button_to 'Checkout', new_order_path, method: :get, class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
