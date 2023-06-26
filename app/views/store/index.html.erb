@@ -4,25 +4,13 @@
     <div class= "title text-center">
         <h1>My Catalog</h1>    
     </div>
+    <%= turbo_stream_from 'products'%>
+    
     <%cache @products do%>
-    <% @products.each do |product|%>
-    <% cache product do%>
-        <div class='card mb-3'>
-            <div class='row g-0'>
-                <div class='col-md-4'>
-                    <%= image_tag(product.image_url, class: 'img-fluid rounded-start', height: '300', width: '490') %>
-                </div>
-                <div class='col-md-8'>
-                    <div class='card-body'>
-                        <h3 class='card-title'><%= product.title%> </h3>
-                        <p class="card-text"><%= sanitize(product.description)%> </p>
-                        <h5><%= number_to_currency(product.price, unit: 'KES', format: '%u%n')%> </h5>
-                        <%= button_to 'Add to Cart', line_items_path(product_id: product), class:'btn btn-primary'%>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% end %>
-    <% end%>
+        <% @products.each do |product|%>
+            <% cache product do%>
+                <%= render partial:'product', object: product%>
+            <%end%>
+        <% end%>
     <%end%>
 </div>

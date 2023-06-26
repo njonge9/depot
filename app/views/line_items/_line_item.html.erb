@@ -1,4 +1,9 @@
 <div id="<%= dom_id line_item %>">
+      <% if line_item == @current_item%>
+        <tr class='line-item-highlight'></tr>
+      <%else%>
+        <tr></tr>
+      <% end%>
   <p>
     <strong>Product:</strong>
     <%= line_item.product_id %>

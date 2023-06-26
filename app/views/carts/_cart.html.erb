@@ -11,6 +11,11 @@
     </thead>
     <tbody>
       <% cart.line_items.each do |line_item| %>
+      <% if line_item == @current_item%>
+        <tr class='line-item-highlight'></tr>
+      <%else%>
+        <tr></tr>
+      <% end%>
         <tr>
           <td><%= line_item.quantity %></td>
           <td>&times;</td>
