@@ -26,10 +26,18 @@
     <%= form.text_field :email, class:'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :pay_type, style: "display: block" ,class: 'form-label' %>
-    <%= form.select :pay_type, Order.pay_types.keys, {prompt: 'Select a payment method'}, class: 'input-field form-control'%>
+  <div data-controller='payment'>
+    <div>
+      <%= form.label :pay_type, style: "display: block" ,class: 'form-label' %>
+      <%= form.select :pay_type, Order.pay_types.keys, {prompt: 'Select a payment method'},
+        'data-payment-target'=>'selection',
+        'data-action' => 'payment#showAdditionalFields',
+        class: 'input-field form-control'%>
+    </div>
+    <%= render partial:'mpesa', locals: {form: form}%>
+    <%= render partial: 'stripe', locals: {form:form}%>
   </div>
+
   <br>
   <div>
     <%= form.submit  'Place Order', class: 'btn btn-warning' %>
