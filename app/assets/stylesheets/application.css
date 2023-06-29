@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .img-fixed-size {
+  height: 300px;
+  width: 400px;
+}
+
+  
+  
