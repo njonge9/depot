@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   get 'stimulus/payment'
   resources :orders
   resources :line_items
