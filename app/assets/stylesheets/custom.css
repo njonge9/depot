@@ -1,0 +1,18 @@
+@keyframes line-item-highlight {
+    0% {
+        background: #8f8;
+    }
+
+    100% {
+        background: none;
+    }
+}
+
+.line-item-highlight {
+    animation: line-item-highlight 5s;
+}
+
+.img-fixed-size {
+    height: 300px;
+    width: 400px;
+}
