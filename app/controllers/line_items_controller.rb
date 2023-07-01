@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+  before_action :authorize_admin!
   include CurrentCart
   before_action :set_cart, only: %i[create]
   before_action :set_line_item, only: %i[ show edit update destroy ]
@@ -65,6 +66,12 @@ class LineItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
       @line_item = LineItem.find(params[:id])
+    end
+
+    def authorize_admin!
+      unless current_user&.admin?
+        redirect_to store_index_url, notice: 'You are not authorized to access this page.' 
+      end
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authorize_admin!
+  before_action :authenticate_user!
   include CurrentCart
   before_action :set_cart, only: %i[new create]
   before_action :ensure_cart_isnt_empty, only: %i[new]
@@ -68,6 +70,12 @@ class OrdersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = Order.find(params[:id])
+  end
+
+  def authorize_admin!
+    unless current_user&.admin!
+      redirect_to store_index_url, notice: 'You are not authorized to access this page'
+    end
   end
 
   # Only allow a list of trusted parameters through.

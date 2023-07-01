@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  before_action :authorize_admin!, except: [:destroy]
+  before_action :authenticate_user!
   before_action :set_cart, only: %i[ show edit update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
@@ -68,6 +70,12 @@ class CartsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def cart_params
       params.fetch(:cart, {})
+    end
+
+    def authorize_admin!
+      unless current_user&.admin?
+        redirect_to store_index_url, notice: "You are not authorized to access this page"
+      end
     end
 
     # invalid cart method
