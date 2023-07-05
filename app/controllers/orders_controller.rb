@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authorize_admin!
+  before_action :authorize_admin!, except: [:new]
   before_action :authenticate_user!
   include CurrentCart
   before_action :set_cart, only: %i[new create]
