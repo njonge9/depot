@@ -8,10 +8,9 @@
  <br>
 <div id="products" class="card">
   <% @products.each do |product| %>
-    <%= image_tag(product.image_url, height: '400px', width: '400px') %>
     <div class="card-body">
       <h5><%= product.title%></h5>
-      <p><%= truncate(product.description,length: 14)%> </p>
+      <p><%= product.description%> </p>
       <%= link_to "Show this product", product, class:"btn btn-primary" %>
     </div>
   <% end %>
