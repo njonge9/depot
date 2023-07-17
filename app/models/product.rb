@@ -6,6 +6,12 @@ class Product < ApplicationRecord
     validates :title, uniqueness: true
     has_rich_text :description
     has_one_attached :image
+
+    def image_as_thumbnail
+        image.variant(resize_to_limit: [200, 200]).processed
+    end
+
+
     private
     # ensure that there are no line items referencing this product
     def ensure_not_referenced_by_any_line_item
