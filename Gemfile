@@ -72,3 +72,6 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+gem 'rails_admin', '~> 3.0'
+gem "cssbundling-rails"
+gem "cssbundling-rails"

@@ -2,7 +2,7 @@
 <div class='card mb-3'>
         <div class='row g-0'>
             <div class='col-md-8'>
-                    <%= image_tag(product.image) %>
+                    <%= image_tag(product.image_as_thumbnail, class: "img-thumbnail") %>
                 <div class='card-body'>
                     <h3 class='card-title'><%= product.title%> </h3>
                     <p class="card-text"><%= product.description%> </p>
