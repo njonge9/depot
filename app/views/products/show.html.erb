@@ -30,6 +30,10 @@
     <td>Description</td>
     <td><%= @product.description%> </td>
   </tr>
+  <tr>
+    <td>Image</td>
+    <td><%=link_to image_tag(@product.image), @product.image%> </td>
+  </tr>
   <tr class="success">
     <td>Price</td>
     <td><%= @product.price%> </td>
