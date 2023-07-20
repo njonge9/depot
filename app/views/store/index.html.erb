@@ -6,10 +6,10 @@
  <%= turbo_stream_from 'products'%>
 
  <% cache @products do %>
-    <div class='row row-cols-1 row-cols-md-3 g-4 py-5'>
+    <div class='row row-cols-1 row-cols-sm-3 g-4 py-5'>
   <% @products.each do |product|%>
     <%cache product do%>
-      <div class='col-md-4'>
+      <div class='col-sm-4'>
         <%= render partial:'product', object: product %>
       </div>
     <% end %>
