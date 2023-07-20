@@ -1,16 +1,20 @@
+<div class='container py-5'>
+ <%= render partial:'layouts/cart', locals: {cart: @cart}%>
+ <div class='title text-center'>
+  <h1>My Catalog</h1>
+ </div>
+ <%= turbo_stream_from 'products'%>
 
-<div class="container">
-<%= render partial:'layouts/cart', locals: {cart: @cart}%>
-    <div class= "title text-center">
-        <h1>My Catalog</h1>    
+ <% cache @products do %>
+    <div class='row row-cols-1 row-cols-md-3 g-4 py-5'>
+  <% @products.each do |product|%>
+    <%cache product do%>
+      <div class='col-md-4'>
+        <%= render partial:'product', object: product %>
+      </div>
+    <% end %>
+  <% end %>
     </div>
-    <%= turbo_stream_from 'products'%>
-    
-    <%cache @products do%>
-        <% @products.each do |product|%>
-            <% cache product do%>
-                <%= render partial:'product', object: product%>
-            <%end%>
-        <% end%>
-    <%end%>
+ <%end%>
+
 </div>
