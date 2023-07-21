@@ -1,15 +1,13 @@
 <%= turbo_frame_tag(dom_id(product)) do%>
-<div class='card mb-3'>
-        <div class='row g-0'>
-            <div class='col-md-8'>
-                    <%= image_tag(product.image_as_thumbnail, class: "img-thumbnail") %>
-                <div class='card-body'>
-                    <h3 class='card-title'><%= product.title%> </h3>
-                    <p class="card-text"><%= product.description%> </p>
-                    <h5><%= number_to_currency(product.price, unit: 'KES', format: '%u%n')%> </h5>
-                    <%= button_to 'Add to Cart', line_items_path(product_id: product), class:'btn btn-primary'%>
-                </div>
-            </div>
+        <div class= 'card h-100' >
+        <%=link_to image_tag(product.image,style:'height:300px', class: "img-rounded card-img-top"),product.image %>
+        <div class='card-body'>
+                <h4 class='card-title'><%= product.title%></h4>
+                <p class='card-text'><%= truncate_action_text_description(product.description, 50) %></p>
         </div>
-    </div>
+        <div class='d-flex justify-content-around mb-5'>
+                <h5 class='card-title'><%= number_to_currency(product.price, unit:'KES', format: '%u%n')%> </h5>
+                <%= button_to 'Add to Cart', line_items_path(product_id: product), class:'btn btn-primary button-pri'%>
+        </div>
+        </div>
 <% end %>
